@@ -24,8 +24,6 @@ namespace _Api.Data.Collections
             {
                 throw new MongoException("Erro ao conectar ao banco de dados!", e);
             }
-            
-            
         }
 
         private void Mapping()
@@ -35,9 +33,10 @@ namespace _Api.Data.Collections
                 BsonClassMap.RegisterClassMap<Infectado>(x =>
                 {
                     x.SetIgnoreExtraElements(true);
-                    x.MapIdMember(i => i.Id);
-                    x.MapMember(i => i.Nome).SetIsRequired(true);
+                    x.MapIdMember(i => i.Id).SetIsRequired(true);
+                    x.MapMember(i => i.Nome);
                     x.MapMember(i => i.Email).SetIsRequired(true);
+                    x.MapMember(i => i.Sexo).SetIsRequired(true);
                 });
             }
             
@@ -47,8 +46,9 @@ namespace _Api.Data.Collections
                 {
                     x.SetIgnoreExtraElements(true);
                     x.MapIdMember(i => i.Id).SetIsRequired(true);
-                    x.MapMember(i => i.Nome).SetIsRequired(true);
+                    x.MapMember(i => i.Nome);
                     x.MapMember(i => i.Email).SetIsRequired(true);
+                    x.MapMember(i => i.Sexo).SetIsRequired(true);
                 });
             }
             

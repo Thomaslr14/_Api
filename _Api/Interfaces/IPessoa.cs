@@ -8,6 +8,7 @@ namespace _Api.Interfaces
         ObjectId Id {get;set;}
         string Nome {get;set;}
         string Email {get;set;}
+        string Sexo {get;set;}
         GeoJson2DGeographicCoordinates Localização {get;set;}
     }
 }
