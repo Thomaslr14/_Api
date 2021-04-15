@@ -1,6 +1,6 @@
 namespace _Api.Controllers
 {
-    public class BaseController
+    public abstract class BaseController
     {
         public string Nome {get;set;}
         public string Email {get;set;}
