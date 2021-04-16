@@ -1,28 +1,27 @@
-using System.Collections.Generic;
 using _Api.Data.Collections;
 using _Api.Models;
+using _Api.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
-
 
 namespace _Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("infectado")]
     public class InfectadoController : BaseController
     {
-        public InfectadoController(MongoDBConnect mongoDbConnect)
+        public InfectadoController(RepositoryInfectado repository)
         {
-            
+            _repositoryInfectado = repository;
         }
 
         [HttpPost]
-        public ActionResult CreateInfectado([FromBody] InfectadoModel mod)
+        public ActionResult CreateInfectado([FromBody] PessoaModel mod)
         {
             var infectado = new Infectado(mod.Nome, mod.Email, mod.Sexo, mod.Latitude, mod.Longitude);
             try 
             {
-                _repositoryInfectado.Create();
+                _repositoryInfectado.Create(infectado);
                 return StatusCode(200, "Infectado contabilizado!");
             }
             catch (MongoException mongoException)
@@ -31,12 +30,11 @@ namespace _Api.Controllers
             }
         }
 
-        // [HttpGet]
-        // public ActionResult<Infectado> GetList()
-        // {
-        //     var filter = Builders<Infectado>.Filter.Empty;
-        //     var infectados = _ListInfectado.Find<Infectado>(filter).ToList();
-        //     Ok(infectados);
-        // }
+        [HttpGet]
+        public ActionResult GetList()
+        {
+            var infectados = _repositoryInfectado.Get();
+            return Ok(infectados);
+        }
     }
 }

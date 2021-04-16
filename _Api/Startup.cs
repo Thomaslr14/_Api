@@ -27,7 +27,9 @@ namespace _Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<MongoDBConnect>(); 
+            services.AddScoped<MongoDBConnect>();
+            services.AddScoped<Repositories.RepositoryVacinado>(); 
+            services.AddScoped<Repositories.RepositoryInfectado>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
