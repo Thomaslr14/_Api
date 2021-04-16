@@ -16,7 +16,8 @@ namespace _Api.Data.Collections
             {
                 var _ConventionPack = new ConventionPack { new CamelCaseElementNameConvention() };
                 ConventionRegistry.Register("camelCase",_ConventionPack, t => true);
-                var _MongoDBClient = new MongoClient(_configuration.GetConnectionString("ConnectionString"));
+                var _MongoDBClient = new MongoClient(_configuration.GetSection("ConnectionString").
+                                            GetSection("DefaultConnection").Value.ToString());
                 db = _MongoDBClient.GetDatabase(_configuration["NomeBanco"]);
                 Mapping();
             }
@@ -33,10 +34,11 @@ namespace _Api.Data.Collections
                 BsonClassMap.RegisterClassMap<Infectado>(x =>
                 {
                     x.SetIgnoreExtraElements(true);
-                    x.MapIdMember(i => i.Id).SetIsRequired(true);
-                    x.MapMember(i => i.Nome);
-                    x.MapMember(i => i.Email).SetIsRequired(true);
-                    x.MapMember(i => i.Sexo).SetIsRequired(true);
+                    x.MapIdField(i => i.Id).SetIsRequired(true);
+                    x.MapField(i => i.Nome);
+                    x.MapField(i => i.Email).SetIsRequired(true);
+                    x.MapField(i => i.Sexo).SetIsRequired(true);
+                    x.MapField(i => i.Localização);
                 });
             }
             
@@ -45,10 +47,11 @@ namespace _Api.Data.Collections
                 BsonClassMap.RegisterClassMap<Vacinado>(x =>
                 {
                     x.SetIgnoreExtraElements(true);
-                    x.MapIdMember(i => i.Id).SetIsRequired(true);
-                    x.MapMember(i => i.Nome);
-                    x.MapMember(i => i.Email).SetIsRequired(true);
-                    x.MapMember(i => i.Sexo).SetIsRequired(true);
+                    x.MapIdField(i => i.Id).SetIsRequired(true);
+                    x.MapField(i => i.Nome);
+                    x.MapField(i => i.Email).SetIsRequired(true);
+                    x.MapField(i => i.Sexo).SetIsRequired(true);
+                    x.MapField(i => i.Localização);
                 });
             }
             
