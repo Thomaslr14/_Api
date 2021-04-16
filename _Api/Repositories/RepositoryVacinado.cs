@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using _Api.Data.Collections;
+using _Api.Interfaces;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace _Api.Repositories
 {
-    public class RepositoryVacinado
+    public class RepositoryVacinado : IRepository<Vacinado>
     {
         protected IMongoCollection<Vacinado> _ListVacinado;
         MongoDBConnect _mongoDBConnect;
@@ -20,11 +22,16 @@ namespace _Api.Repositories
             _ListVacinado.InsertOne(newVacinado);
         }
 
-        public List<Vacinado> Get()
+        public List<Vacinado> GetAll()
         {
             var filter = Builders<Vacinado>.Filter.Empty;
             var vacinados = _ListVacinado.Find<Vacinado>(filter).ToList();
             return vacinados;
+        }
+        public void Delete(ObjectId _id)
+        {
+            // var vacinado = _ListVacinado.Find<Vacinado>(_ => _.Id == _id).Filter;
+            // _ListVacinado.DeleteOne(vacinado);
         }
     }
 }

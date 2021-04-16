@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using _Api.Data.Collections;
 using Microsoft.AspNetCore.Builder;
@@ -31,21 +33,35 @@ namespace _Api
             services.AddScoped<Repositories.RepositoryVacinado>(); 
             services.AddScoped<Repositories.RepositoryInfectado>();
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "_Api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo 
+                { 
+                    Title = "_Api",
+                    Version = "v1" 
+                });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwagger(c =>
+            {
+                c.SerializeAsV2 = true;
+            });
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "_Api");
+            });
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             //app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
