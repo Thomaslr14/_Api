@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>_Api</name>
+    </assembly>
+    <members>
+        <member name="M:_Api.Controllers.InfectadoController.CreateInfectado(_Api.Models.PessoaModel)">
+             <summary>
+             Contabiliza um novo Infectado
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 {
+                    "Nome": "João",
+                    "Email": "teste@hotmail.com",
+                    "Sexo": "M",
+                    "Latitude": -19.8997227,
+                    "Longitude": -44.0793538
+                 }
+            
+             </remarks>
+        </member>
+    </members>
+</doc>

@@ -1,6 +1,7 @@
 using _Api.Data.Collections;
 using _Api.Models;
 using _Api.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 
@@ -15,7 +16,25 @@ namespace _Api.Controllers
             _repositoryInfectado = repository;
         }
 
+        /// <summary>
+        /// Contabiliza um novo Infectado
+        /// </summary>
+        /// <remarks>
+        /// Request de teste:
+        ///
+        ///     {
+        ///        "Nome": "João",
+        ///        "Email": "teste@hotmail.com",
+        ///        "Sexo": "M",
+        ///        "Latitude": -19.8997227,
+        ///        "Longitude": -44.0793538
+        ///     }
+        ///
+        /// </remarks>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult CreateInfectado([FromBody] PessoaModel mod)
         {
             var infectado = new Infectado(mod.Nome, mod.Email, mod.Sexo, mod.Latitude, mod.Longitude);
@@ -30,11 +49,22 @@ namespace _Api.Controllers
             }
         }
 
+
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult GetList()
         {
-            var infectados = _repositoryInfectado.Get();
-            return Ok(infectados);
+            try
+            {
+                var infectados = _repositoryInfectado.GetAll();
+                return Ok(infectados);
+            }
+            catch (System.TimeoutException e)
+            {
+                throw new System.TimeoutException("Erro de timeout", e);
+            }
+            
         }
     }
 }
