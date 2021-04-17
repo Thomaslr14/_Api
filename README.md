@@ -17,5 +17,6 @@
         "Longitude": -44.0793538
     }
 
+## Thomas Rodrigues
 [Linkedin](http://linkedin.com/in/thomas-rodrigues-322463127)  
 [Github](https://github.com/Thomaslr14) 
