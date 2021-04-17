@@ -39,7 +39,14 @@ namespace _Api
                 c.SwaggerDoc("v1", new OpenApiInfo 
                 { 
                     Title = "_Api",
-                    Version = "v1" 
+                    Version = "v1",
+                    Description = "Projeto de API que visa contabilizar infectados e vacinados da Covid-19",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Thomas Rodrigues",
+                        Email = string.Empty,
+                        Url = new Uri("https://github.com/Thomaslr14"),
+                    }
                 });
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -58,6 +65,7 @@ namespace _Api
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "_Api");
+                c.RoutePrefix = string.Empty;
             });
             app.UseHttpsRedirection();
             app.UseRouting();

@@ -50,12 +50,20 @@ namespace _Api.Controllers
             
         }
 
+        /// <summary>
+        /// Busca a listagem de todoso os Vacinados
+        /// </summary>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult GetList()
         {
             var vacinados = _repositoryVacinado.GetAll();
+            if (vacinados.Count == 0)
+            {
+                return Ok("Lista de vacinados vazia!");
+            }
             return Ok(vacinados);
         }
     }

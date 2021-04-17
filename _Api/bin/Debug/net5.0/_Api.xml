@@ -9,7 +9,7 @@
              Contabiliza um novo Infectado
              </summary>
              <remarks>
-             Sample request:
+             Request de teste:
             
                  {
                     "Nome": "João",
@@ -20,6 +20,33 @@
                  }
             
              </remarks>
+        </member>
+        <member name="M:_Api.Controllers.InfectadoController.GetList">
+            <summary>
+            Busca a listagem de todos os Infectados
+            </summary>
+        </member>
+        <member name="M:_Api.Controllers.VacinadoController.CreateVacinado(_Api.Models.PessoaModel)">
+             <summary>
+             Contabiliza um novo Vacinado
+             </summary>
+             <remarks>
+             Request de teste:
+            
+                 {
+                    "Nome": "Maria",
+                    "Email": "teste@gmail.com",
+                    "Sexo": "F",
+                    "Latitude": -19.8400227,
+                    "Longitude": -44.0793538
+                 }
+            
+             </remarks>
+        </member>
+        <member name="M:_Api.Controllers.VacinadoController.GetList">
+            <summary>
+            Busca a listagem de todoso os Vacinados
+            </summary>
         </member>
     </members>
 </doc>

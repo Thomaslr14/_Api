@@ -49,22 +49,21 @@ namespace _Api.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Busca a listagem de todos os Infectados
+        /// </summary>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult GetList()
         {
-            try
+            var infectados = _repositoryInfectado.GetAll();
+            if (infectados.Count == 0)
             {
-                var infectados = _repositoryInfectado.GetAll();
-                return Ok(infectados);
+                return Ok("Lista de infectados vazia!");
             }
-            catch (System.TimeoutException e)
-            {
-                throw new System.TimeoutException("Erro de timeout", e);
-            }
-            
+            return Ok(infectados);
         }
     }
 }
