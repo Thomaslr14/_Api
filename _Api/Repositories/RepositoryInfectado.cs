@@ -17,9 +17,10 @@ namespace _Api.Repositories
             _ListInfectado = _mongoDBConnect.db.GetCollection<Infectado>(typeof(Infectado).Name);
         }
 
-        public void Create(Infectado newInfectado)
+        public bool Create(Infectado newInfectado)
         {
             _ListInfectado.InsertOne(newInfectado);
+            return true;
         }
 
         public List<Infectado> GetAll()
