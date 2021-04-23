@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using _Api.Data.Collections;
 using _Api.Interfaces;
+using _Api.Interfaces.BaseInterfaces;
 using _Api.Interfaces.EntityInterfaces;
 using _Api.Interfaces.RepositoriesInterfaces;
 using MongoDB.Bson;
@@ -13,9 +14,10 @@ namespace _Api.Repositories
         protected IMongoCollection<Vacinado> _ListVacinado;
         MongoDBConnect _mongoDBConnect;
 
-        public RepositoryVacinado(MongoDBConnect connect)
+        public RepositoryVacinado(IMongoConnect connect)
         {
-            _mongoDBConnect = connect;
+            _mongoDBConnect = (MongoDBConnect)connect;
+
             _ListVacinado = _mongoDBConnect.db.GetCollection<Vacinado>(typeof(Vacinado).Name);
         }
 

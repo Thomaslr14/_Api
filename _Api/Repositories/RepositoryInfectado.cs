@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using _Api.Data.Collections;
 using _Api.Interfaces;
+using _Api.Interfaces.BaseInterfaces;
 using _Api.Interfaces.EntityInterfaces;
 using _Api.Interfaces.RepositoriesInterfaces;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -11,9 +13,10 @@ namespace _Api.Repositories
     public class RepositoryInfectado : IRepositoryInfectado
     {
         protected IMongoCollection<Infectado> _ListInfectado; 
-        MongoDBConnect _mongoDBConnect;
+        //MongoDBConnect _mongoDBConnect;
+        IMongoConnect _mongoDBConnect;
         
-        public RepositoryInfectado(MongoDBConnect connect)
+        public RepositoryInfectado(IMongoConnect connect)
         {
             _mongoDBConnect = connect;
             _ListInfectado = _mongoDBConnect.db.GetCollection<Infectado>(typeof(Infectado).Name);
