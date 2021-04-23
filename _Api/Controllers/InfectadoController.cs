@@ -1,6 +1,7 @@
 using _Api.Data.Collections;
+using _Api.Interfaces.EntityInterfaces;
+using _Api.Interfaces.RepositoriesInterfaces;
 using _Api.Models;
-using _Api.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
@@ -11,7 +12,7 @@ namespace _Api.Controllers
     [Route("infectado")]
     public class InfectadoController : BaseController
     {
-        public InfectadoController(RepositoryInfectado repository)
+        public InfectadoController(IRepositoryInfectado repository)
         {
             _repositoryInfectado = repository;
         }
@@ -37,7 +38,7 @@ namespace _Api.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult CreateInfectado([FromBody] PessoaModel mod)
         {
-            var infectado = new Infectado(mod.Nome, mod.Email, mod.Sexo, mod.Latitude, mod.Longitude);
+            IEntityInfectado infectado = new Infectado(mod.Nome, mod.Email, mod.Sexo, mod.Latitude, mod.Longitude);
             try 
             {
                 _repositoryInfectado.Create(infectado);

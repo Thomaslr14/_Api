@@ -5,6 +5,9 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using _Api.Data.Collections;
+using _Api.Interfaces.BaseInterfaces;
+using _Api.Interfaces.RepositoriesInterfaces;
+using _Api.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,9 +32,10 @@ namespace _Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<MongoDBConnect>();
-            services.AddScoped<Repositories.RepositoryVacinado>(); 
-            services.AddScoped<Repositories.RepositoryInfectado>();
+            //services.AddScoped<MongoDBConnect>();
+            services.AddScoped<IMongoConnect,MongoDBConnect>();
+            services.AddScoped<IRepositoryInfectado,RepositoryInfectado>();
+            services.AddScoped<IRepositoryVacinado,RepositoryVacinado>();
             services.AddControllers();
 
             services.AddSwaggerGen(c =>

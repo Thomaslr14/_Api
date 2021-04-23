@@ -1,6 +1,8 @@
+using _Api.Interfaces;
+
 namespace _Api.Models
 {
-    public class PessoaModel
+    public class PessoaModel : IBase
     {
         public string Nome { get;set; }
         public string Email { get;set;}

@@ -1,4 +1,5 @@
 using System;
+using _Api.Interfaces.BaseInterfaces;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
@@ -6,9 +7,9 @@ using MongoDB.Driver;
 
 namespace _Api.Data.Collections
 {
-    public class MongoDBConnect
+    public class MongoDBConnect : IMongoConnect
     {
-        public IMongoDatabase db;
+        public IMongoDatabase db { get;set; }
 
         public MongoDBConnect(IConfiguration _configuration)
         {   
@@ -19,7 +20,7 @@ namespace _Api.Data.Collections
                 var _MongoDBClient = new MongoClient(_configuration.GetSection("ConnectionString").
                                             GetSection("DefaultConnection").Value.ToString());
                 db = _MongoDBClient.GetDatabase(_configuration["NomeBanco"]);
-                Mapping();
+                MappingClass();
             }
             catch (Exception e)
             {
@@ -27,7 +28,8 @@ namespace _Api.Data.Collections
             }
         }
 
-        private void Mapping()
+        
+        public void MappingClass()
         {
             if (!BsonClassMap.IsClassMapRegistered(typeof(Infectado)))
             {
@@ -56,7 +58,5 @@ namespace _Api.Data.Collections
             }
             
         }
-
-        
     }
 }
