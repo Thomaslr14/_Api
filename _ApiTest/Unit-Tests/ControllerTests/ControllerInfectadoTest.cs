@@ -7,6 +7,8 @@ using _Api.Interfaces.RepositoriesInterfaces;
 using _Api.Models;
 using _Api.Repositories;
 using Bogus;
+using FluentAssertions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MongoDB.Driver;
 using Moq;
@@ -58,7 +60,21 @@ namespace _ApiTest.Unit_Tests.RepositoriesTests
             _repositoryInfectado.Verify(_ => _.GetAll(), Times.Once);
            // _repositoryInfectado.Setup(_ => _.GetAll()).Returns(infectados);
             
+        }
 
+        [TestMethod]
+        public void GetList_ControllerInfectado_StatusCode200()
+        {
+            //Arrange
+            Faker<PessoaModel> _pessoamodel = new Faker<PessoaModel>();
+
+            //Act
+            var result = _service.CreateInfectado(_pessoamodel);
+
+            //Assert
+            result.Should().BeOfType<ActionResult>();
+            ((StatusCodeResult)result).StatusCode.Should().Be(200);
+            
         }
 
     }
