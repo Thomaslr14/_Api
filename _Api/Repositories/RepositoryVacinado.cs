@@ -17,9 +17,10 @@ namespace _Api.Repositories
             _ListVacinado = _mongoDBConnect.db.GetCollection<Vacinado>(typeof(Vacinado).Name);
         }
 
-        public void Create(Vacinado newVacinado)
+        public bool Create(Vacinado newVacinado)
         {
             _ListVacinado.InsertOne(newVacinado);
+            return true;
         }
 
         public List<Vacinado> GetAll()
