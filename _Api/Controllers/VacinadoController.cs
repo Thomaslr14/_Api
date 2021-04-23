@@ -1,6 +1,7 @@
 using _Api.Data.Collections;
+using _Api.Interfaces.EntityInterfaces;
+using _Api.Interfaces.RepositoriesInterfaces;
 using _Api.Models;
-using _Api.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
@@ -11,7 +12,7 @@ namespace _Api.Controllers
     [Route("vacinado")]
     public class VacinadoController : BaseController
     {
-        public VacinadoController(RepositoryVacinado repository)
+        public VacinadoController(IRepositoryVacinado repository)
         {
             _repositoryVacinado = repository;   
         }
@@ -37,7 +38,7 @@ namespace _Api.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult CreateVacinado([FromBody] PessoaModel mod)
         {
-            var vacinado = new Vacinado(mod.Nome, mod.Email, mod.Sexo, mod.Latitude, mod.Longitude);
+            IEntityVacinado vacinado = new Vacinado(mod.Nome, mod.Email, mod.Sexo, mod.Latitude, mod.Longitude);
             try 
             {
                 _repositoryVacinado.Create(vacinado);

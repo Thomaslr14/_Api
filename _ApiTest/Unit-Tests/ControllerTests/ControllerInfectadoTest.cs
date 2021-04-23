@@ -9,6 +9,7 @@ using _Api.Repositories;
 using Bogus;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MongoDB.Driver;
 using MongoDB.Driver.GeoJsonObjectModel;
 using Moq;
 
@@ -21,12 +22,14 @@ namespace _ApiTest.Unit_Tests.RepositoriesTests
         private readonly Mock<IRepositoryInfectado> _repositoryInfectado;
         private readonly Mock<IEntityInfectado> _entityInfectado;
         private readonly Mock<MongoDBConnect> _mongoDBConnect;
+        private readonly InfectadoController _service;
 
         public ControllerInfectadoTest()
         {
             _repositoryInfectado = new Mock<IRepositoryInfectado>();
             _entityInfectado = new Mock<IEntityInfectado>();
             _mongoDBConnect = new Mock<MongoDBConnect>();
+            _service = new InfectadoController(_repositoryInfectado.Object);
         }
 
         [TestMethod]
@@ -34,18 +37,29 @@ namespace _ApiTest.Unit_Tests.RepositoriesTests
         {
             //Arrange
             Faker<PessoaModel> fakeInfectado = new Faker<PessoaModel>();
-            var service = new InfectadoController(_repositoryInfectado.Object);
 
             //Act
-            service.CreateInfectado(fakeInfectado);
+            _service.CreateInfectado(fakeInfectado);
 
             //Assert
             _repositoryInfectado.Verify(_ => _.Create(It.IsAny<IEntityInfectado>()), Times.Once());
         }
 
+        [TestMethod]
         public void GetAll_ControllerInfectado_ChamaMetodo()
         {
-            
+            //Arrange
+            var repo = new RepositoryInfectado(_mongoDBConnect.Object);
+            var infectados = repo.GetAll();
+
+            //Act
+            _service.GetList();
+
+            //Assert
+            _repositoryInfectado.Verify(_ => _.GetAll(), Times.Once);
+            _repositoryInfectado.Setup(_ => _.GetAll()).Returns(infectados);
+
+
         }
 
     }
