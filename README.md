@@ -4,7 +4,7 @@
 
 
 - Framework utlilizada = .NetCore 5.0.4
-- Link para download: https://aka.ms/dotnet-core-applaunch?framework=Microsoft.NETCore.App&framework_version=5.0.4&arch=x64&rid=win10-x64
+- Necessário editar connectionString no arquivo appsettings.json
 
 ```
  Testes:
