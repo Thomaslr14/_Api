@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Development\\Git\\_Api\\_Api\\_Api.csproj": {}
+    "c:\\Development\\Git\\_Api\\_Api\\_Api.csproj": {}
   },
   "projects": {
-    "C:\\Development\\Git\\_Api\\_Api\\_Api.csproj": {
+    "c:\\Development\\Git\\_Api\\_Api\\_Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Development\\Git\\_Api\\_Api\\_Api.csproj",
+        "projectUniqueName": "c:\\Development\\Git\\_Api\\_Api\\_Api.csproj",
         "projectName": "_Api",
-        "projectPath": "C:\\Development\\Git\\_Api\\_Api\\_Api.csproj",
+        "projectPath": "c:\\Development\\Git\\_Api\\_Api\\_Api.csproj",
         "packagesPath": "C:\\Users\\thomas.rodrigues\\.nuget\\packages\\",
-        "outputPath": "C:\\Development\\Git\\_Api\\_Api\\obj\\",
+        "outputPath": "c:\\Development\\Git\\_Api\\_Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
