@@ -1,7 +1,7 @@
-using _Api.Data.Collections;
-using _Api.Interfaces;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using _Api.Interfaces.RepositoriesInterfaces;
-using _Api.Repositories;
+using _Api.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace _Api.Controllers
@@ -16,5 +16,19 @@ namespace _Api.Controllers
         public double Latitude {get;set;}
         public double Longitude {get;set;}
         public string Sexo { get; set; }
+
+        protected bool CheckIfIsNull(PessoaModel _pessoaModel)
+        {
+            var propertiesDouble = _pessoaModel.GetType().GetProperties().Where(p => p.PropertyType == (typeof(double?))).Select(p => (double?)p.GetValue(_pessoaModel))
+            .Any(value => value == null);
+
+            var propertiesString = _pessoaModel.GetType().GetProperties().Where(p => p.Name == "Sexo").Select(p => (string)p.GetValue(_pessoaModel))
+            .Any(value => string.IsNullOrEmpty(value));
+
+            if (propertiesDouble || propertiesString)
+                throw new ValidationException();
+            else
+                return false;
+        }
     }
 }

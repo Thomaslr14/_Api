@@ -1,14 +1,12 @@
 using System.Collections.Generic;
 using _Api.Controllers;
 using _Api.Data.Collections;
-using _Api.Interfaces.BaseInterfaces;
 using _Api.Interfaces.EntityInterfaces;
 using _Api.Interfaces.RepositoriesInterfaces;
 using _Api.Models;
-using _Api.Repositories;
-using Bogus;
+using FluentAssertions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MongoDB.Driver;
 using Moq;
 
 namespace _ApiTest.Unit_Tests.RepositoriesTests
@@ -19,7 +17,6 @@ namespace _ApiTest.Unit_Tests.RepositoriesTests
 
         private readonly Mock<IRepositoryInfectado> _repositoryInfectado;
         private readonly Mock<IEntityInfectado> _entityInfectado;
-        // private readonly Mock<IMongoConnect> _mongoDBConnect;
         private readonly InfectadoController _service;
         private readonly Mock<List<Infectado>> _listInfectados;
 
@@ -32,34 +29,61 @@ namespace _ApiTest.Unit_Tests.RepositoriesTests
         }
 
         [TestMethod]
-        public void CreateInfectado_ControllerInfectado_ChamaMetodo()
+        public void CreateInfectado_ControllerInfectado_ReturnStatusCode200()
         {
             //Arrange
-            Faker<PessoaModel> fakeInfectado = new Faker<PessoaModel>();
+            PessoaModel _pessoaModel = new PessoaModel()
+           {
+               Nome = "teste",
+               Email = "teste",
+               Sexo = "Masculino",
+               Latitude = 90.090909,
+               Longitude = 85.66666
+           };
 
             //Act
-            _service.CreateInfectado(fakeInfectado);
+            ActionResult result = _service.CreateInfectado(_pessoaModel);
 
             //Assert
-            _repositoryInfectado.Verify(_ => _.Create(It.IsAny<IEntityInfectado>()), Times.Once());
+            result.Should().BeOfType<ObjectResult>();
+            ((ObjectResult)result).StatusCode.Should().Be(200);      
         }
 
         [TestMethod]
-        public void GetAll_ControllerInfectado_ChamaMetodo()
+        public void Create_ControllerInfectado_ReturnBadRequest()
+        {
+            //Arrange
+           PessoaModel _pessoaModelError = new PessoaModel()
+           {
+               Nome = "teste",
+               Email = "teste",
+               Latitude = 90.090909,
+               Longitude = null
+           };
+            
+            //Act
+            ActionResult result = _service.CreateInfectado(_pessoaModelError);
+            
+            //Assert
+            result.Should().BeOfType<BadRequestObjectResult>();
+            ((ObjectResult)result).StatusCode.Should().Be(400);        
+        }
+
+        
+
+        [TestMethod]
+        public void GetList_ControllerInfectado_ReturnStatusCode200()
         {
             //Arrange
             _repositoryInfectado.Setup(m => m.GetAll()).Returns(_listInfectados.Object);
-            //_repositoryInfectado.Setup(_ => _.GetAll()).Returns();
-
+            
             //Act
-            _service.GetList();
-
+            var result = _service.GetList();
+            
             //Assert
             _repositoryInfectado.Verify(_ => _.GetAll(), Times.Once);
-           // _repositoryInfectado.Setup(_ => _.GetAll()).Returns(infectados);
-            
-
+            result.Should().BeOfType<OkObjectResult>();
+            ((OkObjectResult)result).StatusCode.Should().Be(200);        
         }
-
     }
 }

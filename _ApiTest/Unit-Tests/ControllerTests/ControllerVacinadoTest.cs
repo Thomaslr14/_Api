@@ -4,7 +4,8 @@ using _Api.Data.Collections;
 using _Api.Interfaces.EntityInterfaces;
 using _Api.Interfaces.RepositoriesInterfaces;
 using _Api.Models;
-using Bogus;
+using FluentAssertions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -28,30 +29,60 @@ namespace _ApiTest.Unit_Tests.ControllerTests
 
         
         [TestMethod]
-        public void CreateVacinado_ControllerVacinado_ChamaMetodo()
+        public void CreateVacinado_ControllerVacinado_ReturnStatusCode200()
         {
             //Arrange
-            Faker<PessoaModel> fakeVacinado = new Faker<PessoaModel>();
+             PessoaModel _pessoaModel = new PessoaModel()
+           {
+               Nome = "teste",
+               Email = "teste",
+               Sexo = "Masculino",
+               Latitude = 90.090909,
+               Longitude = 85.66666
+           };
             
             //Act
-            _service.CreateVacinado(fakeVacinado);
+            ActionResult result = _service.CreateVacinado(_pessoaModel);
 
             //Assert
             _repositoryVacinado.Verify(_ => _.Create(It.IsAny<IEntityVacinado>()), Times.Once());
+             result.Should().BeOfType<ObjectResult>();
+            ((ObjectResult)result).StatusCode.Should().Be(200);
         }
 
         [TestMethod]
-        public void GetAll_ControllerVacinado_ChamaMetodo()
+        public void Create_ControllerInfectado_ReturnBadRequest()
+        {
+            //Arrange
+           PessoaModel _pessoaModelError = new PessoaModel()
+           {
+               Nome = "teste",
+               Email = "teste",
+               Latitude = 90.090909,
+               Longitude = null
+           };
+            
+            //Act
+            ActionResult result = _service.CreateVacinado(_pessoaModelError);
+            
+            //Assert
+            result.Should().BeOfType<BadRequestObjectResult>();
+            ((ObjectResult)result).StatusCode.Should().Be(400);        
+        }
+
+        [TestMethod]
+        public void GetList_ControllerVacinado_ReturnStatusCode200()
         {
             //Arrange
             _repositoryVacinado.Setup(m => m.GetAll()).Returns(_listVacinados.Object);
            
             //Act
-            _service.GetList();
-
+            ActionResult result = _service.GetList();
+           
             //Assert
             _repositoryVacinado.Verify(_ => _.GetAll(), Times.Once);
-           
+            result.Should().BeOfType<OkObjectResult>();
+            ((OkObjectResult)result).StatusCode.Should().Be(200); 
         }
     }
 }

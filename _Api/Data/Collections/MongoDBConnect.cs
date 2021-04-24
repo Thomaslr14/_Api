@@ -38,7 +38,7 @@ namespace _Api.Data.Collections
                     x.SetIgnoreExtraElements(true);
                     x.MapIdField(i => i.Id).SetIsRequired(true);
                     x.MapField(i => i.Nome);
-                    x.MapField(i => i.Email).SetIsRequired(true);
+                    x.MapField(i => i.Email);
                     x.MapField(i => i.Sexo).SetIsRequired(true);
                     x.MapField(i => i.Localização);
                 });
@@ -51,7 +51,7 @@ namespace _Api.Data.Collections
                     x.SetIgnoreExtraElements(true);
                     x.MapIdField(i => i.Id).SetIsRequired(true);
                     x.MapField(i => i.Nome);
-                    x.MapField(i => i.Email).SetIsRequired(true);
+                    x.MapField(i => i.Email);
                     x.MapField(i => i.Sexo).SetIsRequired(true);
                     x.MapField(i => i.Localização);
                 });

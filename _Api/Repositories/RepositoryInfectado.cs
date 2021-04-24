@@ -13,7 +13,6 @@ namespace _Api.Repositories
     public class RepositoryInfectado : IRepositoryInfectado
     {
         protected IMongoCollection<Infectado> _ListInfectado; 
-        //MongoDBConnect _mongoDBConnect;
         IMongoConnect _mongoDBConnect;
         
         public RepositoryInfectado(IMongoConnect connect)

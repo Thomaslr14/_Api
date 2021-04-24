@@ -6947,11 +6947,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\DEVELOPMENT\\Git\\_Api\\_ApiTest\\_ApiTest.csproj",
+      "projectUniqueName": "c:\\Development\\Git\\_Api\\_ApiTest\\_ApiTest.csproj",
       "projectName": "_ApiTest",
-      "projectPath": "c:\\DEVELOPMENT\\Git\\_Api\\_ApiTest\\_ApiTest.csproj",
+      "projectPath": "c:\\Development\\Git\\_Api\\_ApiTest\\_ApiTest.csproj",
       "packagesPath": "C:\\Users\\thomas.rodrigues\\.nuget\\packages\\",
-      "outputPath": "c:\\DEVELOPMENT\\Git\\_Api\\_ApiTest\\obj\\",
+      "outputPath": "c:\\Development\\Git\\_Api\\_ApiTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -6972,8 +6972,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "c:\\DEVELOPMENT\\Git\\_Api\\_Api\\_Api.csproj": {
-              "projectPath": "c:\\DEVELOPMENT\\Git\\_Api\\_Api\\_Api.csproj"
+            "c:\\Development\\Git\\_Api\\_Api\\_Api.csproj": {
+              "projectPath": "c:\\Development\\Git\\_Api\\_Api\\_Api.csproj"
             }
           }
         }
@@ -7036,7 +7036,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
