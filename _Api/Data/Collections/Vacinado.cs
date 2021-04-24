@@ -1,4 +1,3 @@
-using _Api.Interfaces;
 using _Api.Interfaces.EntityInterfaces;
 using MongoDB.Bson;
 using MongoDB.Driver.GeoJsonObjectModel;

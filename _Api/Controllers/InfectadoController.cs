@@ -1,3 +1,5 @@
+using System;
+using System.ComponentModel.DataAnnotations;
 using _Api.Data.Collections;
 using _Api.Interfaces.EntityInterfaces;
 using _Api.Interfaces.RepositoriesInterfaces;
@@ -38,16 +40,22 @@ namespace _Api.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult CreateInfectado([FromBody] PessoaModel mod)
         {
-            IEntityInfectado infectado = new Infectado(mod.Nome, mod.Email, mod.Sexo, mod.Latitude, mod.Longitude);
             try 
             {
+                CheckIfIsNull(mod);
+                IEntityInfectado infectado = new Infectado(mod.Nome, mod.Email, mod.Sexo, Convert.ToDouble(mod.Latitude), Convert.ToDouble(mod.Longitude));
                 _repositoryInfectado.Create(infectado);
                 return StatusCode(200, "Infectado contabilizado!");
+            }
+            catch (ValidationException)
+            {
+                return BadRequest("Erro! Campos obrigatórios não foram preenchidos!");
             }
             catch (MongoException mongoException)
             {
                 throw new MongoException("Erro ao contabilizar infectado", mongoException);
             }
+
         }
 
         /// <summary>
