@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using _Api.Interfaces.RepositoriesInterfaces;
+using _Api.Maps;
 using Microsoft.AspNetCore.Mvc;
 
 namespace _Api.Controllers
@@ -16,7 +17,6 @@ namespace _Api.Controllers
 
         public IActionResult Index()
         {
-            _repoInfectado.GetLocation();
             return View("Views/Home/index.cshtml");
         }
     }

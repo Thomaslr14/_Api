@@ -8,10 +8,8 @@ namespace _Api.Interfaces.RepositoriesInterfaces
     public interface IRepositoryInfectado
     {
         void Create(IEntityInfectado newInfectado);
-
         List<Infectado> GetAll();
-
-        GeoJson2DGeographicCoordinates GetLocation();
+        List<GeoJson2DGeographicCoordinates> GetLocations();
 
     }
 }

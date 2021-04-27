@@ -13,11 +13,14 @@ namespace _Api.Repositories
     {
         protected IMongoCollection<Infectado> _ListInfectado; 
         IMongoConnect _mongoDBConnect;
+
+        private FilterDefinition<Infectado> _filter;
         
         public RepositoryInfectado(IMongoConnect connect)
         {
             _mongoDBConnect = connect;
             _ListInfectado = _mongoDBConnect.db.GetCollection<Infectado>(typeof(Infectado).Name);
+            _filter = Builders<Infectado>.Filter.Empty;
         }
 
         public void Create(IEntityInfectado newInfectado)
@@ -27,23 +30,14 @@ namespace _Api.Repositories
 
         public List<Infectado> GetAll()
         {
-            var filter = Builders<Infectado>.Filter.Empty;
-            var infectados = _ListInfectado.Find<Infectado>(filter).ToList();
+            var infectados = _ListInfectado.Find<Infectado>(_filter).ToList();
             return infectados;
         }
 
-        public GeoJson2DGeographicCoordinates GetLocation()
+        public List<GeoJson2DGeographicCoordinates> GetLocations()
         {
-            var filter = Builders<Infectado>.Filter.Empty;
-            var temp = _ListInfectado.Find<Infectado>(filter).ToList();
-            var teste = temp.GetType().GetProperties().Where(_ => _.Name == "Id").Select(p => p.GetValue(_ListInfectado));
-
-
-            var lat = 0;
-            var longt = 0;
-            var coordinates = new GeoJson2DGeographicCoordinates(lat, longt);
-            return coordinates; 
-
+            var listCoordenates = _ListInfectado.Find<Infectado>(_filter).ToList().Select(p => p.Localização).ToList();
+            return listCoordenates; 
         }
     }
 }
