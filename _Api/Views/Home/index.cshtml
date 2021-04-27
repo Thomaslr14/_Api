@@ -17,14 +17,21 @@
     var map;
     function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -19.9026615, lng: -44.1041363},
+        center: {
+            lat: -19.9026615,
+            lng: -44.1041363
+        },
         zoom: 14
         });
- 
-        @* var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(-30.059737, -51.164658),
+
+        @model _Api.Models.IndexModel
+        @{
+        }
+
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(lat, longt),
             title:"Store 1"
-        }); *@
+        }); 
        
     };
 </script>
