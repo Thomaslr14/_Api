@@ -4,6 +4,7 @@ namespace _Api.Interfaces.MappingInterfaces
 {
     public interface IMapGeoLocationInfectado
     {
-        Coordenadas MapLocationsInfectados();
+        double[][,] arrayCoordenates {get;set;}
+        void MapLocationsInfectados();
     }
 }

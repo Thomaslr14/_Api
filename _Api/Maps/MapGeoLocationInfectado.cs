@@ -10,50 +10,30 @@ namespace _Api.Maps
     {
         private readonly IRepositoryInfectado _repositoryInfectado;
         private readonly List<GeoJson2DGeographicCoordinates> _listCoordenatesInfectados;
-
-        public MapGeoLocationInfectado()
-        {
-
-        }
+        public double[][,] arrayCoordenates {get;set;}
 
         public MapGeoLocationInfectado(IRepositoryInfectado repositoryInfectado)
         {
             _repositoryInfectado = repositoryInfectado;
             _listCoordenatesInfectados = _repositoryInfectado.GetLocations();
+            arrayCoordenates = new double[_listCoordenatesInfectados.Count][,];
+            MapLocationsInfectados();
         }
         
-        public Coordenadas MapLocationsInfectados()
-        {
-            double?[] lat = null;
-            double?[] longt = null;
+        public void MapLocationsInfectados()
+        {   
             var coordenates = _listCoordenatesInfectados.Select(p => new 
             {
                 p.Latitude,
                 p.Longitude
             }).ToList();
-            
-            for (int index = 0; index < coordenates.Count; index++)
+
+            int i = 0;
+            foreach(var item in coordenates)
             {
-                lat[index] = coordenates[index].Latitude;
-                longt[index] = coordenates[index].Longitude;
+                arrayCoordenates[i] = new double[,] {{item.Latitude, item.Longitude}};
+                i++;
             }
-            
-            var _coordenates = new Coordenadas(lat, longt);
-            return _coordenates;
-        }
-
-        
-    }
-
-    public class Coordenadas
-    {
-        public double?[] lat;
-        public double?[] longt;
-
-        public Coordenadas(double?[] lat, double?[] longt)
-        {
-            this.lat = lat;
-            this.longt = longt;
         }
     }
 }

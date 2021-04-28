@@ -124,3 +124,5 @@ c:\Development\Git\_Api\_ApiTest\obj\Debug\net5.0\ref\_ApiTest.dll
 c:\Development\Git\_Api\_ApiTest\obj\Debug\net5.0\_ApiTest.pdb
 c:\Development\Git\_Api\_ApiTest\obj\Debug\net5.0\_ApiTest.genruntimeconfig.cache
 c:\Development\Git\_Api\_ApiTest\bin\Debug\net5.0\Bogus.dll
+c:\DEVELOPMENT\Git\_Api\_ApiTest\bin\Debug\net5.0\_Api.Views.dll
+c:\DEVELOPMENT\Git\_Api\_ApiTest\bin\Debug\net5.0\_Api.Views.pdb

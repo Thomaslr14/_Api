@@ -4,8 +4,10 @@ using System.Reflection;
 using _Api.Data.Collections;
 using _Api.Interfaces.BaseInterfaces;
 using _Api.Interfaces.MappingInterfaces;
+using _Api.Interfaces.ModelInterfaces;
 using _Api.Interfaces.RepositoriesInterfaces;
 using _Api.Maps;
+using _Api.Models;
 using _Api.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,7 +32,8 @@ namespace _Api
             services.AddScoped<IMongoConnect,MongoDBConnect>();
             services.AddScoped<IRepositoryInfectado,RepositoryInfectado>();
             services.AddScoped<IRepositoryVacinado,RepositoryVacinado>();
-            services.AddScoped<IMapGeoLocationInfectado,MapGeoLocationInfectado>();
+            services.AddScoped<IMapGeoLocationInfectado, MapGeoLocationInfectado>();
+            services.AddScoped<IIndexModel, IndexModel>();
             services.AddControllersWithViews();
 
             // services.AddSwaggerGen(c =>
