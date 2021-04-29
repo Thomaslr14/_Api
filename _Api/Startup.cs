@@ -23,8 +23,7 @@ namespace _Api
         {
             Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
+                public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -69,21 +68,13 @@ namespace _Api
             //     c.SwaggerEndpoint("/swagger/v1/swagger.json", "_Api");
             //     c.RoutePrefix = string.Empty;
             // });
+            
             app.UseHttpsRedirection();
             app.UseRouting();
-            // app.UseEndpoints(endpoints =>
-            // {
-            //     endpoints.MapControllers();
-            // });
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}"
-                );
+                endpoints.MapControllers();
             });
-
-            
         }
     }
 }

@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace _Api.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("Home")]
     public class HomeController : Controller
     {
         public IRepositoryInfectado _repoInfectado;
@@ -19,6 +19,10 @@ namespace _Api.Controllers
             _mapGeoLocation = mapGeoLocation;
         }
 
+        [Route("~/")]
+        [Route("~/Index")]
+        [Route("/Home")]
+        [Route("~/Home/Index")]
         public IActionResult Index()
         {
             IndexModel index = new IndexModel(_mapGeoLocation);

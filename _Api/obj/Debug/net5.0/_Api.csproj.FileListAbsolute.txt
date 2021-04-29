@@ -50,3 +50,4 @@ C:\Development\Git\_Api\_Api\obj\Debug\net5.0\_Api.RazorCoreGenerate.cache
 C:\Development\Git\_Api\_Api\obj\Debug\net5.0\Razor\Views\Home\index.cshtml.g.cs
 C:\Development\Git\_Api\_Api\obj\Debug\net5.0\_Api.RazorTargetAssemblyInfo.cs
 C:\Development\Git\_Api\_Api\obj\Debug\net5.0\_Api.Views.pdb
+c:\DEVELOPMENT\Git\_Api\_Api\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
