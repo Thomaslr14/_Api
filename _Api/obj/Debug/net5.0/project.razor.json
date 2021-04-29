@@ -15619,6 +15619,11 @@
   "RootNamespace": "_Api",
   "Documents": [
     {
+      "FilePath": "c:\\DEVELOPMENT\\Git\\_Api\\_Api\\Views\\Shared\\_AddNew.cshtml",
+      "TargetPath": "Views\\Shared\\_AddNew.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\DEVELOPMENT\\Git\\_Api\\_Api\\Views\\Home\\index.cshtml",
       "TargetPath": "Views\\Home\\index.cshtml",
       "FileKind": "mvc"

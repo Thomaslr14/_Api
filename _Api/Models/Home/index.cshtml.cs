@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using _Api.Interfaces.MappingInterfaces;
 using _Api.Interfaces.ModelInterfaces;
-using _Api.Interfaces.RepositoriesInterfaces;
-using _Api.Maps;
 
 namespace _Api.Models
 {
@@ -18,8 +16,8 @@ namespace _Api.Models
             _geoLocation = geoLocation;
             Geo();
         }
-        
-        private void Geo()
+
+        public void Geo()
         {
             var tamanho = _geoLocation.arrayCoordenates.Length;
             latitude = new double[tamanho];
@@ -29,11 +27,7 @@ namespace _Api.Models
                 latitude[x] = _geoLocation.arrayCoordenates[x][0,0];
                 longitute[x] = _geoLocation.arrayCoordenates[x][0,1];
             }
-        }
-
-        void IIndexModel.Geo()
-        {
-            throw new System.NotImplementedException();
+        
         }
     }
     
