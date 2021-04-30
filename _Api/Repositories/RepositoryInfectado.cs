@@ -1,12 +1,11 @@
 using System.Collections.Generic;
 using _Api.Data.Collections;
-using _Api.Interfaces;
 using _Api.Interfaces.BaseInterfaces;
 using _Api.Interfaces.EntityInterfaces;
 using _Api.Interfaces.RepositoriesInterfaces;
-using Microsoft.Extensions.Configuration;
-using MongoDB.Bson;
+using MongoDB.Driver.GeoJsonObjectModel;
 using MongoDB.Driver;
+using System.Linq;
 
 namespace _Api.Repositories
 {
@@ -14,11 +13,14 @@ namespace _Api.Repositories
     {
         protected IMongoCollection<Infectado> _ListInfectado; 
         IMongoConnect _mongoDBConnect;
+
+        private FilterDefinition<Infectado> _filter;
         
         public RepositoryInfectado(IMongoConnect connect)
         {
             _mongoDBConnect = connect;
             _ListInfectado = _mongoDBConnect.db.GetCollection<Infectado>(typeof(Infectado).Name);
+            _filter = Builders<Infectado>.Filter.Empty;
         }
 
         public void Create(IEntityInfectado newInfectado)
@@ -28,9 +30,14 @@ namespace _Api.Repositories
 
         public List<Infectado> GetAll()
         {
-            var filter = Builders<Infectado>.Filter.Empty;
-            var infectados = _ListInfectado.Find<Infectado>(filter).ToList();
+            var infectados = _ListInfectado.Find<Infectado>(_filter).ToList();
             return infectados;
+        }
+
+        public List<GeoJson2DGeographicCoordinates> GetLocations()
+        {
+            var listCoordenates = _ListInfectado.Find<Infectado>(_filter).ToList().Select(p => p.Localização).ToList();
+            return listCoordenates; 
         }
     }
 }

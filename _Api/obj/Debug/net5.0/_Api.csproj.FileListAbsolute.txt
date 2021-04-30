@@ -40,3 +40,4 @@ C:\Development\Git\_Api\_Api\obj\Debug\net5.0\_Api.pdb
 C:\Development\Git\_Api\_Api\obj\Debug\net5.0\_Api.genruntimeconfig.cache
 C:\development\Git\_Api\_Api\bin\Debug\net5.0\_Api.xml
 C:\development\Git\_Api\_Api\obj\Debug\net5.0\_Api.xml
+C:\Development\Git\_Api\_Api\bin\Debug\net5.0\_Api.Views.dll

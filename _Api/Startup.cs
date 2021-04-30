@@ -3,7 +3,9 @@ using System.IO;
 using System.Reflection;
 using _Api.Data.Collections;
 using _Api.Interfaces.BaseInterfaces;
+using _Api.Interfaces.MappingInterfaces;
 using _Api.Interfaces.RepositoriesInterfaces;
+using _Api.Maps;
 using _Api.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -19,8 +21,7 @@ namespace _Api
         {
             Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
+                public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -28,7 +29,8 @@ namespace _Api
             services.AddScoped<IMongoConnect,MongoDBConnect>();
             services.AddScoped<IRepositoryInfectado,RepositoryInfectado>();
             services.AddScoped<IRepositoryVacinado,RepositoryVacinado>();
-            services.AddControllers();
+            services.AddScoped<IMapGeoLocationInfectado, MapGeoLocationInfectado>();
+            services.AddControllersWithViews();
 
             services.AddSwaggerGen(c =>
             {
@@ -63,6 +65,7 @@ namespace _Api
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "_Api");
                 c.RoutePrefix = string.Empty;
             });
+            
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseEndpoints(endpoints =>
