@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Development\\Git\\_Api\\_Api.MVC\\_Api.MVC.csproj": {}
+    "C:\\DEVELOPMENT\\Git\\_Api\\_Api.MVC\\_Api.MVC.csproj": {}
   },
   "projects": {
-    "C:\\Development\\Git\\_Api\\_Api.MVC\\_Api.MVC.csproj": {
+    "C:\\DEVELOPMENT\\Git\\_Api\\_Api.MVC\\_Api.MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Development\\Git\\_Api\\_Api.MVC\\_Api.MVC.csproj",
+        "projectUniqueName": "C:\\DEVELOPMENT\\Git\\_Api\\_Api.MVC\\_Api.MVC.csproj",
         "projectName": "_Api.MVC",
-        "projectPath": "C:\\Development\\Git\\_Api\\_Api.MVC\\_Api.MVC.csproj",
+        "projectPath": "C:\\DEVELOPMENT\\Git\\_Api\\_Api.MVC\\_Api.MVC.csproj",
         "packagesPath": "C:\\Users\\thomas.rodrigues\\.nuget\\packages\\",
-        "outputPath": "C:\\Development\\Git\\_Api\\_Api.MVC\\obj\\",
+        "outputPath": "C:\\DEVELOPMENT\\Git\\_Api\\_Api.MVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -61,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }
