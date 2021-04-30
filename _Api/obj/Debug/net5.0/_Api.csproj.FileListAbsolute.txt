@@ -41,14 +41,3 @@ C:\Development\Git\_Api\_Api\obj\Debug\net5.0\_Api.genruntimeconfig.cache
 C:\development\Git\_Api\_Api\bin\Debug\net5.0\_Api.xml
 C:\development\Git\_Api\_Api\obj\Debug\net5.0\_Api.xml
 C:\Development\Git\_Api\_Api\bin\Debug\net5.0\_Api.Views.dll
-C:\Development\Git\_Api\_Api\bin\Debug\net5.0\_Api.Views.pdb
-C:\Development\Git\_Api\_Api\obj\Debug\net5.0\_Api.RazorAssemblyInfo.cache
-C:\Development\Git\_Api\_Api\obj\Debug\net5.0\_Api.RazorAssemblyInfo.cs
-C:\Development\Git\_Api\_Api\obj\Debug\net5.0\_Api.TagHelpers.input.cache
-C:\Development\Git\_Api\_Api\obj\Debug\net5.0\_Api.TagHelpers.output.cache
-C:\Development\Git\_Api\_Api\obj\Debug\net5.0\_Api.RazorCoreGenerate.cache
-C:\Development\Git\_Api\_Api\obj\Debug\net5.0\Razor\Views\Home\index.cshtml.g.cs
-C:\Development\Git\_Api\_Api\obj\Debug\net5.0\_Api.RazorTargetAssemblyInfo.cs
-C:\Development\Git\_Api\_Api\obj\Debug\net5.0\_Api.Views.pdb
-c:\DEVELOPMENT\Git\_Api\_Api\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
-C:\DEVELOPMENT\Git\_Api\_Api\obj\Debug\net5.0\Razor\Views\Shared\_AddNew.cshtml.g.cs
