@@ -71,6 +71,8 @@ namespace _Api
                 app.UseHsts();
             }
 
+            app.UseStaticFiles();
+
             // app.UseSwagger(c =>
             // {
             //     c.SerializeAsV2 = true;
