@@ -15,6 +15,7 @@ namespace _ApiTest.Unit_Tests.ControllerTests
     public class ControllerVacinadoTest
     {
         private readonly Mock<IRepositoryVacinado> _repositoryVacinado;
+        private readonly Mock<IRepositoryInfectado> _repositoryInfectado;
         private readonly Mock<IEntityVacinado> _entityVacinado;
         private readonly VacinadoController _service;
         private readonly Mock<List<Vacinado>> _listVacinados;
@@ -24,7 +25,7 @@ namespace _ApiTest.Unit_Tests.ControllerTests
             _repositoryVacinado = new Mock<IRepositoryVacinado>();
             _entityVacinado = new Mock<IEntityVacinado>();
             _listVacinados= new Mock<List<Vacinado>>();
-            _service = new VacinadoController(_repositoryVacinado.Object);
+            _service = new VacinadoController(_repositoryInfectado.Object,_repositoryVacinado.Object);
         }
 
         

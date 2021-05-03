@@ -14,9 +14,10 @@ namespace _Api.Controllers
     [Route("vacinado")]
     public class VacinadoController : BaseController
     {
-        public VacinadoController(IRepositoryVacinado repository)
+        public VacinadoController(IRepositoryInfectado repositoryInfectado, IRepositoryVacinado repositoryVacinado) : base(repositoryInfectado, repositoryVacinado)
         {
-            _repositoryVacinado = repository;   
+            _repositoryVacinado = repositoryVacinado;
+            _repositoryInfectado = repositoryInfectado;
         }
 
         /// <summary>

@@ -7,7 +7,7 @@ namespace _Api.Interfaces.RepositoriesInterfaces
     public interface IRepositoryVacinado
     {
         void Create(IEntityVacinado newVacinado);
-
         List<Vacinado> GetAll();
+        int GetNumberOfVacinados();
     }
 }

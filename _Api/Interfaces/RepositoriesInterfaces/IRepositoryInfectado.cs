@@ -10,6 +10,7 @@ namespace _Api.Interfaces.RepositoriesInterfaces
         void Create(IEntityInfectado newInfectado);
         List<Infectado> GetAll();
         List<GeoJson2DGeographicCoordinates> GetLocations();
+        int GetNumberOfInfectados();
 
     }
 }

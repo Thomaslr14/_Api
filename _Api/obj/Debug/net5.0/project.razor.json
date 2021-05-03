@@ -15617,6 +15617,12 @@
     "CSharpLanguageVersion": 900
   },
   "RootNamespace": "_Api",
-  "Documents": [],
+  "Documents": [
+    {
+      "FilePath": "c:\\Development\\Git\\_Api\\_Api\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    }
+  ],
   "SerializationFormat": "0.2"
 }

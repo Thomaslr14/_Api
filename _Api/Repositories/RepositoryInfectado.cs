@@ -6,6 +6,7 @@ using _Api.Interfaces.RepositoriesInterfaces;
 using MongoDB.Driver.GeoJsonObjectModel;
 using MongoDB.Driver;
 using System.Linq;
+using System;
 
 namespace _Api.Repositories
 {
@@ -13,8 +14,7 @@ namespace _Api.Repositories
     {
         protected IMongoCollection<Infectado> _ListInfectado; 
         IMongoConnect _mongoDBConnect;
-
-        private FilterDefinition<Infectado> _filter;
+        private readonly FilterDefinition<Infectado> _filter;
         
         public RepositoryInfectado(IMongoConnect connect)
         {
@@ -38,6 +38,20 @@ namespace _Api.Repositories
         {
             var listCoordenates = _ListInfectado.Find<Infectado>(_filter).ToList().Select(p => p.Localização).ToList();
             return listCoordenates; 
+        }
+
+
+        public int GetNumberOfInfectados()
+        {
+            try 
+            {
+                var infec = (int)_ListInfectado.CountDocuments(_filter);
+                return infec;
+            }
+            catch(NullReferenceException ex)
+            {
+                throw new NullReferenceException("A lista está vazia!", ex);
+            }
         }
     }
 }

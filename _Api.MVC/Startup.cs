@@ -2,6 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using _Api.Data.Collections;
+using _Api.Interfaces.BaseInterfaces;
+using _Api.Interfaces.MappingInterfaces;
+using _Api.Interfaces.RepositoriesInterfaces;
+using _Api.Maps;
+using _Api.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -22,8 +28,13 @@ namespace _Api.MVC
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        { 
+            services.AddScoped<IMongoConnect,MongoDBConnect>();
+            services.AddScoped<IRepositoryInfectado,RepositoryInfectado>();
+            services.AddScoped<IRepositoryVacinado,RepositoryVacinado>();
+            services.AddScoped<IMapGeoLocationInfectado, MapGeoLocationInfectado>();
             services.AddControllersWithViews();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
