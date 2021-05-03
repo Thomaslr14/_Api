@@ -10,6 +10,14 @@
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
+
+<script>
+  window.handleTickerChanged = (symbol, price) => {
+    // ... client-side processing/display code ...
+    return 'Done!';
+  };
+</script>
+
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <style type="text/css">
       /* Always set the map height explicitly to define the size of the div
@@ -27,7 +35,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       }
     </style>
 <script type="text/javascript" src="~/js/site.js"></script>
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkMNthxGt3NRFc-QVIoYc8rDi3QjC3fcw&callback=initMap&libraries=&v=weekly" 
 async></script>
 </head>
