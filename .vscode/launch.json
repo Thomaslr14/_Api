@@ -6,6 +6,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
+            "requireExactSource": false,
             "program": "${workspaceFolder}/_Api.MVC/bin/Debug/net5.0/_Api.MVC.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
@@ -37,7 +38,6 @@
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_URLS": "http://localhost:6001"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"

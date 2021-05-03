@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\DEVELOPMENT\\Git\\_Api\\_Api.MVC\\_Api.MVC.csproj",
+  "FilePath": "c:\\Development\\Git\\_Api\\_Api.MVC\\_Api.MVC.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "5.0",
@@ -15617,12 +15617,6 @@
     "CSharpLanguageVersion": 900
   },
   "RootNamespace": "_Api.MVC",
-  "Documents": [
-    {
-      "FilePath": "c:\\DEVELOPMENT\\Git\\_Api\\_Api.MVC\\Views\\Home\\index.cshtml",
-      "TargetPath": "Views\\Home\\index.cshtml",
-      "FileKind": "mvc"
-    }
-  ],
+  "Documents": [],
   "SerializationFormat": "0.2"
 }
