@@ -2,28 +2,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core _Api.MVC",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build",
-            "requireExactSource": false,
-            "program": "${workspaceFolder}/_Api.MVC/bin/Debug/net5.0/_Api.MVC.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}",
-            "stopAtEntry": false,
-            "serverReadyAction": {
-                "action": "openExternally",
-                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
-            },
-            
-            "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development",
-            },
-            "sourceFileMap": {
-                "/Views": "${workspaceFolder}/Views"
-            }
-        },
-        {
             "name": ".NET Core _Api",
             "type": "coreclr",
             "request": "launch",
@@ -48,12 +26,6 @@
             "type": "coreclr",
             "request": "attach",
             "processId": "${command:pickProcess}"
-        }
-    ],
-    "compounds": [
-        {
-            "name": "API/MVC",
-            "configurations": [".NET Core _Api",".NET Core _Api.MVC"]
         }
     ]
 }

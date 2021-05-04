@@ -1,3 +1,4 @@
+using _Api.Controllers;
 using _Api.Interfaces;
 using _Api.Interfaces.RepositoriesInterfaces;
 using _Api.MVC.Views.Home;
@@ -25,5 +26,12 @@ namespace _Api.MVC.Controllers
         {
             return View(_index);
         }
+        
+        [Route("/Cadastrar")]
+        public IActionResult Cadastrar()
+        {
+            return View();
+        }
+
     }
 }
