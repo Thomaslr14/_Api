@@ -33,5 +33,18 @@ namespace _Api.MVC.Controllers
             return View();
         }
 
+        [Route("/Login")]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [Route("/Login")]
+        [HttpPost]
+        public IActionResult LoginUser()
+        {
+            return View();
+        }
+
     }
 }
