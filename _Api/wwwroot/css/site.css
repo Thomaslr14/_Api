@@ -1,1 +1,10 @@
-﻿
+﻿.div-half {
+    max-width: 694px;
+    max-height: 580px;
+}
+
+.div-dashboard
+{
+    width: 440px;
+    height: 140px;
+}
