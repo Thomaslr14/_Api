@@ -1,6 +1,6 @@
-@model IndexModel;
+@model CadastrarModel;
 <!DOCTYPE html>
-<html lang="pt-br"> 
+<html>
 <head>
 <title>@ViewData["Title"] - Mapeamento Covid-19</title>
 <meta charset="UTF-8">
@@ -50,7 +50,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 async></script>
 </head>
 <body class="w3-light-grey">
-<!-- Top container -->
+    <!-- Top container -->
   <div class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="collapse navbar-collapse" id="navbarColor01">
       <a class="leftside-div" href="/Login"><button type="button" class="btn btn-info leftside-div">Login</button></a>
@@ -65,7 +65,7 @@ async></script>
   </div>
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="/Home" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Overview</a>
+    <a href="/" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Overview</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Infectados</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Vacinados</a>
     <a href="/Cadastrar" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Cadastramento</a><br><br>
@@ -81,54 +81,74 @@ async></script>
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:10px">
-    <h3><b><i class="fa fa-dashboard"></i>  Dashboard</b></h3>
+    <h3><b><i class="fa fa-users"></i>  Cadastramento</b></h3>
   </header>
   <hr>
-  <div class="w3-row-padding w3-margin-bottom">
-    <div style="width: 440px; height: 112px;" class="w3-quarter ">
-      <div class="w3-container w3-red w3-padding-16">
-        <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
-        <div class="w3-right">
-          <h3>@Model._numberInfectados</h3>
-        </div>
-        <div class="w3-clear"></div>
-        <h4>Infectados</h4>
-      </div>
-    </div>
-    <div style="width: 440px; height: 112px;" class="w3-quarter">
-      <div class="w3-container w3-blue w3-padding-16">
-        <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
-        <div class="w3-right">
-          <h3>@Model._numberVacinados</h3>
-        </div>
-        <div class="w3-clear"></div>
-        <h4>Vacinados</h4>
-      </div>
-    </div>
-    <div style="width: 440px; height: 112px;" class="w3-quarter">
-      <div class="w3-container w3-orange w3-text-white w3-padding-16">
-        <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
-        <div class="w3-right">
-          <h3>@Model._totalContabilizados</h3>
-        </div>
-        <div class="w3-clear"></div>
-        <h4>Total de Contabilizados</h4>
-      </div>
-    </div>
-  </div>
-<hr>
+  <div class="w3-row-padding w3-margin-bottom div-half">
+    <div style="width: 50%; margin-left: 1%; margin-top: 0px;">
+      <form asp-action="Cadastrar">
+        <fieldset class="form-group">
+        </fieldset>
+          <fieldset>
+            <label for="exampleInputEmail1">Tipo</label>
+            <div class="form-group">
+              <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                Vacinado
+              </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                  Infectado
+                </label>
+              </div>
+            </div>
 
-<div class="w3-panel">
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-twothird" style="width: 900px; height: 400px;">
-        <div id="map"></div>
-      </div>
-      <div class="w3-third" style="height: 300px;">
-        <!-- Feeds --> 
-      </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Nome</label>
+              <input type="text" class="form-control" id="IdNome" asp-for="" placeholder="Nome">
+              <small id="emailHelp" class="form-text text-muted">Opcional</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email</label>
+              <input type="email" class="form-control" id="IdEmail" aria-describedby="emailHelp" placeholder="example@example.com.br">
+              <small id="emailHelp" class="form-text text-muted">Opcional</small>
+            </div>
+            <label>Sexo</label>
+            <div class="form-group">
+              <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1">
+                Masculino
+              </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                  Feminino
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Latitude</label>
+              <input type="text" class="form-control" id="idLatitude" placeholder="00.000000">
+              <small id="emailHelp" class="form-text text-muted">Obrigatório</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Longitude</label>
+              <input type="text" class="form-control" id="idLongitude" placeholder="00.000000">
+              <small id="emailHelp" class="form-text text-muted">Obrigatório</small>
+            </div>
+            </fieldset>
+              <button method="post" type="submit" class="btn btn-primary">Submit</button>
+            </fieldset>
+      </form>
     </div>
   </div>
-  <hr>
+    
+<hr>
 
 <!-- Footer -->
 <footer class="w3-container w3-padding-16 w3-light-grey">
@@ -138,29 +158,6 @@ async></script>
 
   <!-- End page content -->
 </div>
-<script>
-// Get the Sidebar
-var mySidebar = document.getElementById("mySidebar");
 
-// Get the DIV with overlay effect
-var overlayBg = document.getElementById("myOverlay");
-
-// Toggle between showing and hiding the sidebar, and add overlay effect
-function w3_open() {
-  if (mySidebar.style.display === 'block') {
-    mySidebar.style.display = 'none';
-    overlayBg.style.display = "none";
-  } else {
-    mySidebar.style.display = 'block';
-    overlayBg.style.display = "block";
-  }
-}
-
-// Close the sidebar with the close button
-function w3_close() {
-  mySidebar.style.display = "none";
-  overlayBg.style.display = "none";
-}
-</script>
 </body>
 </html>

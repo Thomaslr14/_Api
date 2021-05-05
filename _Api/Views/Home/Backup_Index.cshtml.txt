@@ -1,8 +1,7 @@
-@model IndexModel;
 <!DOCTYPE html>
-<html lang="pt-br"> 
+<html>
 <head>
-<title>@ViewData["Title"] - Mapeamento Covid-19</title>
+<title>W3.CSS Template</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -22,6 +21,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     return 'Done!';
   };
 </script>
+
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <style type="text/css">
       /* Always set the map height explicitly to define the size of the div
@@ -50,25 +50,37 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 async></script>
 </head>
 <body class="w3-light-grey">
+
 <!-- Top container -->
   <div class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="collapse navbar-collapse" id="navbarColor01">
-      <a class="leftside-div" href="/Login"><button type="button" class="btn btn-info leftside-div">Login</button></a>
+      <button type="button" class="btn btn-info leftside-div">Login</button>
     </div>
   </div>
 
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:200px;" id="mySidebar"><br>
+  <div class="w3-container w3-row">
+    <div class="w3-col s8 w3-bar">
+      <span>Welcome, <strong>User</strong></span><br>
+    </div>
+  </div>
   <hr>
   <div class="w3-container">
     <h5>Dashboard</h5>
   </div>
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="/Home" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Overview</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Overview</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Infectados</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Vacinados</a>
-    <a href="/Cadastrar" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Cadastramento</a><br><br>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
   </div>
 </nav>
 
@@ -77,17 +89,17 @@ async></script>
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:200px;margin-top:10px;">
+<div class="w3-main" style="margin-left:200px;margin-top:43px;">
 
   <!-- Header -->
-  <header class="w3-container" style="padding-top:10px">
-    <h3><b><i class="fa fa-dashboard"></i>  Dashboard</b></h3>
+  <header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i>  Dashboard</b></h5>
   </header>
-  <hr>
+
   <div class="w3-row-padding w3-margin-bottom">
-    <div style="width: 440px; height: 112px;" class="w3-quarter ">
+    <div class="w3-quarter">
       <div class="w3-container w3-red w3-padding-16">
-        <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+        <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
         <div class="w3-right">
           <h3>@Model._numberInfectados</h3>
         </div>
@@ -95,9 +107,9 @@ async></script>
         <h4>Infectados</h4>
       </div>
     </div>
-    <div style="width: 440px; height: 112px;" class="w3-quarter">
+    <div class="w3-quarter">
       <div class="w3-container w3-blue w3-padding-16">
-        <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+        <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
         <div class="w3-right">
           <h3>@Model._numberVacinados</h3>
         </div>
@@ -105,7 +117,7 @@ async></script>
         <h4>Vacinados</h4>
       </div>
     </div>
-    <div style="width: 440px; height: 112px;" class="w3-quarter">
+    <div class="w3-quarter">
       <div class="w3-container w3-orange w3-text-white w3-padding-16">
         <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
         <div class="w3-right">
@@ -116,28 +128,66 @@ async></script>
       </div>
     </div>
   </div>
-<hr>
 
-<div class="w3-panel">
+  <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-twothird" style="width: 900px; height: 400px;">
+      <div class="w3-twothird" style="height: 300px;">
+        <h5>Regions</h5>
         <div id="map"></div>
       </div>
       <div class="w3-third" style="height: 300px;">
-        <!-- Feeds --> 
+        <h5>Feeds</h5>
+        <table class="w3-table w3-striped w3-white">
+          <tr>
+            <td><i class="fa fa-user w3-text-blue w3-large"></i></td>
+            <td>New record, over 90 views.</td>
+            <td><i>10 mins</i></td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-bell w3-text-red w3-large"></i></td>
+            <td>Database error.</td>
+            <td><i>15 mins</i></td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-users w3-text-yellow w3-large"></i></td>
+            <td>New record, over 40 users.</td>
+            <td><i>17 mins</i></td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-comment w3-text-red w3-large"></i></td>
+            <td>New comments.</td>
+            <td><i>25 mins</i></td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-bookmark w3-text-blue w3-large"></i></td>
+            <td>Check transactions.</td>
+            <td><i>28 mins</i></td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-laptop w3-text-red w3-large"></i></td>
+            <td>CPU overload.</td>
+            <td><i>35 mins</i></td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-share-alt w3-text-green w3-large"></i></td>
+            <td>New shares.</td>
+            <td><i>39 mins</i></td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
   <hr>
 
-<!-- Footer -->
-<footer class="w3-container w3-padding-16 w3-light-grey">
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-16 w3-light-grey">
     <h4>FOOTER</h4>
     <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-</footer>
+  </footer>
 
   <!-- End page content -->
 </div>
+
 <script>
 // Get the Sidebar
 var mySidebar = document.getElementById("mySidebar");

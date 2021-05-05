@@ -15619,8 +15619,33 @@
   "RootNamespace": "_Api",
   "Documents": [
     {
+      "FilePath": "c:\\Development\\Git\\_Api\\_Api\\Views\\Home\\Cadastrar.cshtml",
+      "TargetPath": "Views\\Home\\Cadastrar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Development\\Git\\_Api\\_Api\\Views\\Home\\Login.cshtml",
+      "TargetPath": "Views\\Home\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Development\\Git\\_Api\\_Api\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Development\\Git\\_Api\\_Api\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Development\\Git\\_Api\\_Api\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Development\\Git\\_Api\\_Api\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     }
   ],

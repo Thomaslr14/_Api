@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.JSInterop;
 
-namespace _Api.MVC.Views.Home
+namespace _Api.Models
 {
     public class IndexModel : PageModel
     {
